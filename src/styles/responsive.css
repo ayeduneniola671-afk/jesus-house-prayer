@@ -32,6 +32,11 @@
   .ministry__grid {
     gap: 3.5rem;
   }
+
+  .request-layout {
+    grid-template-columns: minmax(210px, 0.65fr) minmax(0, 1.35fr);
+    gap: 2.5rem;
+  }
 }
 
 @media (max-width: 720px) {
@@ -44,8 +49,8 @@
   }
 
   .brand__mark {
-    width: 39px;
-    height: 39px;
+    width: 44px;
+    height: 44px;
   }
 
   .menu-toggle {
@@ -144,6 +149,44 @@
     gap: 4rem;
   }
 
+  .request-layout,
+  .about-ministry {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .request-aside {
+    max-width: 560px;
+  }
+
+  .about-ministry {
+    gap: 1.5rem;
+  }
+
+  .about-values__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ministry-value,
+  .ministry-value + .ministry-value {
+    min-height: auto;
+    padding: 1.6rem 0;
+    border-left: 0;
+  }
+
+  .ministry-value + .ministry-value {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .ministry-value__number {
+    margin-bottom: 0.8rem;
+  }
+
+  .about-cta__inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .scripture {
     max-width: 560px;
   }
@@ -153,12 +196,22 @@
     flex-direction: column;
   }
 
-  .site-footer__inner {
-    min-height: 92px;
+  .site-footer__main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding-block: 3rem;
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__bottom {
+    min-height: 76px;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.15rem;
   }
 }
 
@@ -186,5 +239,22 @@
 
   .scripture__ornament {
     left: 1.3rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .request-card {
+    padding: 1.25rem;
+  }
+
+  .page-intro h1 {
+    font-size: clamp(2.8rem, 13vw, 3.5rem);
+  }
+
+  .prayer-form__submit,
+  .about-cta .button {
+    width: 100%;
   }
 }

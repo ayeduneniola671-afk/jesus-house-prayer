@@ -30,7 +30,7 @@ function Navbar() {
     <header className="site-header">
       <div className="container navbar">
         <Link className="brand" to="/" aria-label="Jesus House, Redeem Church home" onClick={closeMenu}>
-          <span className="brand__mark" aria-hidden="true">JH</span>
+          <img className="brand__mark" src="/images/church-logo.jpg" alt="" aria-hidden="true" />
           <span className="brand__name">
             <span>Jesus House</span>
             <span>Redeem Church</span>
