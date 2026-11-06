@@ -3,12 +3,39 @@
     --container-gutter: clamp(1.35rem, 5vw, 3rem);
   }
 
+  .site-footer__main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
   .navbar {
-    min-height: 82px;
+    min-height: 88px;
   }
 
   .primary-navigation {
-    gap: 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .navbar__main-logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .navbar__main-brand {
+    gap: 0.55rem;
+  }
+
+  .navbar__main-name span:first-child {
+    font-size: 1.02rem;
+  }
+
+  .navbar__main-name span:last-child {
+    font-size: 0.54rem;
+    letter-spacing: 0.13em;
   }
 
   .hero {
@@ -39,29 +66,47 @@
   }
 }
 
-@media (max-width: 720px) {
-  h1 {
-    font-size: clamp(3.25rem, 12vw, 5.2rem);
-  }
-
+@media (max-width: 880px) {
   .navbar {
-    min-height: 76px;
+    min-height: 78px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.5rem;
   }
 
-  .brand__mark {
+  .navbar__headquarters-logo {
     width: 44px;
     height: 44px;
   }
 
+  .navbar__main-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navbar__main-brand {
+    gap: 0.4rem;
+  }
+
+  .navbar__main-name span:first-child {
+    font-size: 0.92rem;
+  }
+
+  .navbar__main-name span:last-child {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
   .menu-toggle {
     display: inline-flex;
+    justify-self: center;
   }
 
   .primary-navigation {
     position: absolute;
-    top: calc(100% + 1px);
-    right: 0;
-    left: 0;
+    z-index: 2;
+    top: 100%;
+    right: calc(var(--container-gutter) * -1);
+    left: calc(var(--container-gutter) * -1);
     display: none;
     align-items: stretch;
     gap: 0;
@@ -88,6 +133,29 @@
   .button--nav {
     align-self: flex-start;
     margin-top: 1rem;
+  }
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: clamp(3.25rem, 12vw, 5.2rem);
+  }
+
+  .church-brand {
+    gap: 0.5rem;
+  }
+
+  .church-brand__logos {
+    gap: 0.25rem;
+  }
+
+  .church-brand__logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .church-brand__divider {
+    height: 30px;
   }
 
   .hero {
@@ -149,6 +217,71 @@
     gap: 4rem;
   }
 
+  .welcome-section__grid,
+  .prayer-platform__grid,
+  .about-community__grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .about-community__image,
+  .about-community__image img {
+    min-height: 300px;
+  }
+
+  .church-gallery__heading {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .church-gallery__heading > p {
+    justify-self: start;
+  }
+
+  .church-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: clamp(150px, 28vw, 220px);
+  }
+
+  .church-gallery__item--1,
+  .church-gallery__item--2,
+  .church-gallery__item--3,
+  .church-gallery__item--4,
+  .church-gallery__item--5,
+  .church-gallery__item--6 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .church-gallery__item--1,
+  .church-gallery__item--4 {
+    grid-row: span 2;
+  }
+
+  .featured-event__card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-event__intro {
+    padding: 2.5rem 1.75rem 2rem;
+  }
+
+  .featured-event__intro::before {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .featured-event__theme-label {
+    margin-top: 1.4rem;
+  }
+
+  .featured-event__information {
+    margin: 0 1.75rem 1.75rem;
+    padding: 1.5rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.17);
+    border-left: 0;
+  }
+
   .request-layout,
   .about-ministry {
     grid-template-columns: 1fr;
@@ -202,16 +335,17 @@
     padding-block: 3rem;
   }
 
-  .site-footer__brand {
-    grid-column: 1 / -1;
-  }
-
   .site-footer__bottom {
     min-height: 76px;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     gap: 0.15rem;
+  }
+
+  .church-brand--footer .church-brand__logo {
+    width: 38px;
+    height: 38px;
   }
 }
 
@@ -241,6 +375,94 @@
     left: 1.3rem;
   }
 
+  .featured-event__heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .featured-event__information {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .event-detail--address,
+  .event-social {
+    grid-column: auto;
+  }
+
+  .church-brand__logo,
+  .church-brand--footer .church-brand__logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .church-brand__divider {
+    height: 26px;
+  }
+
+  .church-brand__name span:first-child,
+  .church-brand--footer .church-brand__name span:first-child {
+    font-size: 0.93rem;
+  }
+
+  .church-brand__name span:last-child,
+  .church-brand--footer .church-brand__name span:last-child {
+    font-size: 0.49rem;
+    letter-spacing: 0.08em;
+  }
+
+  .navbar {
+    min-height: 72px;
+    gap: 0.35rem;
+  }
+
+  .navbar__headquarters-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar__headquarters-label {
+    font-size: 0.58rem;
+  }
+
+  .navbar__main-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar__main-brand {
+    gap: 0.3rem;
+  }
+
+  .navbar__main-name span:first-child {
+    font-size: 0.78rem;
+  }
+
+  .navbar__main-name span:last-child {
+    font-size: 0.44rem;
+    letter-spacing: 0.07em;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .church-gallery__grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+  }
+
+  .church-gallery__item--1,
+  .church-gallery__item--2,
+  .church-gallery__item--3,
+  .church-gallery__item--4,
+  .church-gallery__item--5,
+  .church-gallery__item--6 {
+    grid-row: auto;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -256,5 +478,25 @@
   .prayer-form__submit,
   .about-cta .button {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer__main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-block: 2.5rem;
+  }
+
+  .site-footer__brand {
+    grid-column: auto;
+  }
+
+  .site-footer__bottom {
+    min-height: 76px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.15rem;
   }
 }

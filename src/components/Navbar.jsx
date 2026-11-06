@@ -29,11 +29,14 @@ function Navbar() {
   return (
     <header className="site-header">
       <div className="container navbar">
-        <Link className="brand" to="/" aria-label="Jesus House, Redeem Church home" onClick={closeMenu}>
-          <img className="brand__mark" src="/images/church-logo.jpg" alt="" aria-hidden="true" />
-          <span className="brand__name">
-            <span>Jesus House</span>
-            <span>Redeem Church</span>
+        <Link className="navbar__headquarters" to="/" aria-label="RCCG headquarters home">
+          <span className="navbar__headquarters-unit">
+            <img
+              className="navbar__headquarters-logo"
+              src="/images/redeem-hq-logo.png"
+              alt="RCCG headquarters logo"
+            />
+            <span className="navbar__headquarters-label">RCCG</span>
           </span>
         </Link>
 
@@ -47,7 +50,6 @@ function Navbar() {
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
-
         <nav
           className={`primary-navigation${menuOpen ? ' is-open' : ''}`}
           id="primary-navigation"
@@ -68,6 +70,18 @@ function Navbar() {
             Submit a Prayer <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         </nav>
+
+        <Link className="navbar__main-brand" to="/" aria-label="Jesus House Prayer Summit home">
+          <img
+            className="navbar__main-logo"
+            src="/images/jesus-house-branch-logo.jpg"
+            alt="Jesus House Zonal Headquarters branch logo"
+          />
+          <span className="navbar__main-name">
+            <span>Jesus House</span>
+            <span>PRAYER SUMMIT</span>
+          </span>
+        </Link>
       </div>
     </header>
   )

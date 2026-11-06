@@ -1,5 +1,48 @@
-import { ArrowUpRight } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import ChurchBrand from './ChurchBrand.jsx'
+
+const socialPlatforms = [
+  { name: 'Facebook', account: 'Oluseyi Ademolu Prayer Summit' },
+  { name: 'Instagram', account: '' },
+  { name: 'TikTok', account: '' },
+  { name: 'YouTube', account: 'Divine Intervention Prayer Summit' },
+]
+
+function SocialIcon({ platform }) {
+  const iconPaths = {
+    Facebook: (
+      <path d="M13.5 21v-8h2.7l.4-3h-3.1V8c0-.9.3-1.6 1.6-1.6H17V3.7c-.8-.1-1.7-.2-2.6-.2-2.7 0-4.5 1.6-4.5 4.7V10H7v3h2.9v8h3.6Z" />
+    ),
+    Instagram: (
+      <>
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.8" r="0.8" className="social-icon__dot" />
+      </>
+    ),
+    TikTok: (
+      <path d="M15.5 3h-3.2v12a2.6 2.6 0 1 1-2.2-2.6v-3.3a5.9 5.9 0 1 0 5.4 5.9V9a8.2 8.2 0 0 0 4.5 1.4V7.2A5 5 0 0 1 15.5 3Z" />
+    ),
+    YouTube: (
+      <>
+        <rect x="2.5" y="5" width="19" height="14" rx="4" />
+        <path d="m10 9 5 3-5 3z" className="social-icon__play" />
+      </>
+    ),
+  }
+
+  return (
+    <svg
+      className={`social-icon social-icon--${platform.toLowerCase()}`}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {iconPaths[platform]}
+    </svg>
+  )
+}
 
 function Footer() {
   return (
@@ -7,18 +50,11 @@ function Footer() {
       <div className="container">
         <div className="site-footer__main">
           <div className="site-footer__brand">
-            <Link
-              className="site-footer__brand-link"
-              to="/"
-              aria-label="Jesus House, Redeem Church home"
-            >
-              <img src="/images/church-logo.jpg" alt="" aria-hidden="true" />
-              <span className="site-footer__brand-name">
-                <span>Jesus House</span>
-                <span>Redeem Church</span>
-              </span>
-            </Link>
-            <p>A welcoming place to share what is on your heart.</p>
+            <ChurchBrand variant="footer" />
+            <p>
+              A welcoming way to connect with the prayer ministry at Jesus
+              House, Redeem Church and share what is on your heart.
+            </p>
           </div>
 
           <div className="site-footer__navigation">
@@ -30,18 +66,38 @@ function Footer() {
             </nav>
           </div>
 
-          <div className="site-footer__invitation">
-            <p className="site-footer__label">YOU ARE NOT ALONE</p>
-            <h2>Let us pray with you.</h2>
-            <Link className="site-footer__prayer-link" to="/prayer-request">
-              Share a prayer request <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
+          <div className="site-footer__social">
+            <p className="site-footer__label">Connect with us</p>
+            <ul className="site-footer__social-list">
+              {socialPlatforms.map(({ name, account }) => (
+                <li
+                  key={name}
+                  aria-label={account ? `${name}: ${account}` : name}
+                >
+                  <SocialIcon platform={name} />
+                  <span>
+                    {account ? `${name}: ${account}` : name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="site-footer__contact">
+            <p className="site-footer__label">Visit us</p>
+            <address>
+              <MapPin size={20} aria-hidden="true" />
+              <span>
+                29, Ogbe Valley Estates, Oke-Eletu Ijede Road, Ikorodu, Lagos
+                State, Nigeria.
+              </span>
+            </address>
           </div>
         </div>
 
         <div className="site-footer__bottom">
           <p>© {new Date().getFullYear()} Jesus House, Redeem Church</p>
-          <p>Prayer changes things. You are not alone.</p>
+          <p>A place for faith, fellowship and prayer.</p>
         </div>
       </div>
     </footer>

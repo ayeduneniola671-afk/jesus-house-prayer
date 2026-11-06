@@ -121,43 +121,133 @@ h2 {
 .site-header {
   position: relative;
   z-index: 5;
-  border-bottom: 1px solid var(--color-line);
   background: var(--color-ivory);
 }
 
-.navbar {
-  display: flex;
-  min-height: 96px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.brand {
+.navbar__headquarters {
   display: inline-flex;
+  min-width: 0;
   align-items: center;
-  gap: 0.8rem;
+  justify-self: start;
   flex-shrink: 0;
 }
 
-.brand__mark {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  object-fit: cover;
+.navbar__headquarters-unit {
+  display: grid;
+  flex: 0 0 auto;
+  justify-items: center;
+  gap: 0.05rem;
 }
 
-.brand__name {
+.navbar__headquarters-logo {
+  display: block;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.navbar__headquarters-label {
+  color: #89774f;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+}
+
+.navbar {
+  position: relative;
+  display: grid;
+  min-height: 100px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.navbar__main-brand {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  justify-self: end;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.navbar__main-logo {
+  display: block;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.navbar__main-name {
+  display: grid;
+  gap: 0.12rem;
+  line-height: 1.25;
+}
+
+.navbar__main-name span:first-child {
+  color: var(--color-navy);
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.navbar__main-name span:last-child {
+  color: #89774f;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+}
+
+.church-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.church-brand__logos {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.church-brand__logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.church-brand__logo--headquarters {
+  width: 40px;
+}
+
+.church-brand__logo--branch {
+  width: 44px;
+}
+
+.church-brand__divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(197, 166, 106, 0.7);
+}
+
+.church-brand__name {
   display: grid;
   line-height: 1.35;
 }
 
-.brand__name span:first-child {
+.church-brand__name span:first-child {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-.brand__name span:last-child {
+.church-brand__name span:last-child {
   color: var(--color-muted);
   font-size: 0.63rem;
   letter-spacing: 0.15em;
@@ -167,7 +257,8 @@ h2 {
 .primary-navigation {
   display: flex;
   align-items: center;
-  gap: clamp(1.5rem, 3.1vw, 3.4rem);
+  justify-self: center;
+  gap: clamp(1rem, 2vw, 1.8rem);
 }
 
 .nav-link {
@@ -463,6 +554,267 @@ h2 {
   color: var(--color-navy);
 }
 
+.welcome-section {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+  background: var(--color-white);
+}
+
+.welcome-section__grid,
+.prayer-platform__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  align-items: start;
+  gap: clamp(2.5rem, 8vw, 8rem);
+}
+
+.welcome-section .eyebrow,
+.prayer-platform .eyebrow {
+  margin-bottom: 1rem;
+}
+
+.welcome-section h2,
+.prayer-platform h2 {
+  max-width: 500px;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.welcome-section__copy,
+.prayer-platform__copy {
+  display: grid;
+  align-content: center;
+  gap: 1.15rem;
+  color: #5e6b70;
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.prayer-platform {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+  background: #eee8dc;
+}
+
+.prayer-platform__copy .button {
+  justify-self: start;
+  margin-top: 0.5rem;
+}
+
+.featured-event {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+  background: #f5f0e7;
+}
+
+.featured-event__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.featured-event__heading > span {
+  color: #647176;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.featured-event__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  overflow: hidden;
+  border: 1px solid rgba(197, 166, 106, 0.58);
+  color: var(--color-white);
+  background: var(--color-navy);
+  box-shadow: 0 22px 54px rgba(23, 43, 53, 0.12);
+}
+
+.featured-event__intro {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.featured-event__intro::before {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-top: 1px solid rgba(197, 166, 106, 0.7);
+  border-left: 1px solid rgba(197, 166, 106, 0.7);
+  content: '';
+}
+
+.featured-event__name {
+  color: #e8dfce;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.8vw, 2rem);
+  line-height: 1.3;
+}
+
+.featured-event__theme-label {
+  margin-top: 2.1rem;
+  color: #d5bd8c;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.featured-event__intro h2 {
+  margin-top: 0.45rem;
+  color: #e3c88f;
+  font-size: clamp(2.5rem, 4.5vw, 4.15rem);
+  line-height: 1.08;
+}
+
+.featured-event__scripture {
+  margin-top: 0.8rem;
+  color: rgba(255, 255, 255, 0.74);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+.featured-event__intro .button {
+  margin-top: 2rem;
+}
+
+.featured-event__information {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  gap: 1.5rem 1.75rem;
+  margin-block: 2rem;
+  padding: 1rem clamp(1.5rem, 4vw, 3.5rem);
+  border-left: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+.event-detail {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.event-detail > svg {
+  flex: 0 0 auto;
+  margin-top: 0.22rem;
+  color: #d5bd8c;
+  stroke-width: 1.6;
+}
+
+.event-detail > div {
+  min-width: 0;
+}
+
+.event-detail p:last-child {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.event-detail__label {
+  margin-bottom: 0.2rem;
+  color: #d5bd8c;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.event-detail--address {
+  grid-column: 1 / -1;
+}
+
+.church-gallery {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+  background: var(--color-white);
+}
+
+.church-gallery__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.7fr);
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 2.2rem;
+}
+
+.church-gallery__heading .eyebrow {
+  margin-bottom: 0.9rem;
+}
+
+.church-gallery__heading h2 {
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+}
+
+.church-gallery__heading > p {
+  max-width: 440px;
+  justify-self: end;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.church-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: clamp(85px, 8vw, 115px);
+  gap: 1rem;
+}
+
+.church-gallery__item {
+  overflow: hidden;
+  margin: 0;
+  border-radius: 4px;
+  background: #e6e1d8;
+}
+
+.church-gallery__item--1 {
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 3;
+}
+
+.church-gallery__item--2 {
+  grid-column: 6 / span 4;
+  grid-row: 1 / span 2;
+}
+
+.church-gallery__item--3 {
+  grid-column: 10 / span 3;
+  grid-row: 1 / span 2;
+}
+
+.church-gallery__item--4 {
+  grid-column: 6 / span 4;
+  grid-row: 3 / span 2;
+}
+
+.church-gallery__item--5 {
+  grid-column: 10 / span 3;
+  grid-row: 3 / span 2;
+}
+
+.church-gallery__item--6 {
+  grid-column: 1 / span 5;
+  grid-row: 4 / span 2;
+}
+
+.church-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.church-gallery__item:hover img {
+  transform: scale(1.035);
+}
+
 .ministry {
   padding-block: clamp(5.5rem, 9vw, 8.5rem);
   background: var(--color-white);
@@ -551,6 +903,14 @@ h2 {
   font-size: clamp(2.1rem, 4vw, 3.45rem);
 }
 
+.prayer-cta__description {
+  max-width: 660px;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
 .button--light {
   flex: 0 0 auto;
   color: var(--color-navy);
@@ -564,42 +924,30 @@ h2 {
 
 .site-footer {
   color: rgba(255, 255, 255, 0.72);
-  background: #11232b;
+  background: var(--color-navy);
 }
 
 .site-footer__main {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(120px, 0.55fr) minmax(240px, 0.9fr);
-  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.65fr) minmax(0, 1.25fr) minmax(0, 1.1fr);
+  gap: clamp(1.75rem, 3vw, 3rem);
   padding-block: 4rem 3.5rem;
 }
 
-.site-footer__brand-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
+.church-brand--footer .church-brand__logo {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
 }
 
-.site-footer__brand-link img {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.site-footer__brand-name {
-  display: grid;
-  line-height: 1.35;
-}
-
-.site-footer__brand-name span:first-child {
+.church-brand--footer .church-brand__name span:first-child {
   color: var(--color-white);
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-.site-footer__brand-name span:last-child {
+.church-brand--footer .church-brand__name span:last-child {
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.63rem;
   letter-spacing: 0.15em;
@@ -607,7 +955,7 @@ h2 {
 }
 
 .site-footer__brand > p {
-  max-width: 290px;
+  max-width: 340px;
   margin-top: 1.2rem;
   font-size: 0.83rem;
 }
@@ -639,19 +987,80 @@ h2 {
   color: var(--color-white);
 }
 
-.site-footer__invitation h2 {
-  max-width: 300px;
-  margin-bottom: 1.1rem;
-  color: var(--color-white);
-  font-size: clamp(1.7rem, 2.5vw, 2.25rem);
+.site-footer__social-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.site-footer__prayer-link {
-  display: inline-flex;
+.site-footer__social-list li,
+.site-footer__contact address {
+  display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.65rem;
+  min-width: 0;
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.site-footer__social-list svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.site-footer__social-list span {
+  min-width: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.site-footer__social-list li {
+  padding-block: 0.1rem;
+  transition: color var(--transition);
+}
+
+.site-footer__social-list li:hover {
+  color: var(--color-white);
+}
+
+.site-footer__contact svg {
+  flex: 0 0 auto;
   color: #d5bd8c;
-  font-weight: 600;
+  stroke-width: 1.7;
+}
+
+.site-footer__social-list svg {
+  color: #d5bd8c;
+  stroke-width: 1.7;
+}
+
+.social-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.social-icon--facebook path,
+.social-icon--tiktok path,
+.social-icon--youtube .social-icon__play {
+  fill: currentColor;
+  stroke: none;
+}
+
+.social-icon--instagram .social-icon__dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.site-footer__contact address {
+  align-items: flex-start;
+  font-style: normal;
+  overflow-wrap: anywhere;
 }
 
 .site-footer__bottom {
@@ -984,6 +1393,49 @@ h2 {
   line-height: 1.9;
 }
 
+.about-community {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+  background: #eee8dc;
+}
+
+.about-community__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(2.5rem, 8vw, 7rem);
+}
+
+.about-community__image {
+  overflow: hidden;
+  min-height: 360px;
+  margin: 0;
+  border-radius: 4px;
+  background: #e6e1d8;
+}
+
+.about-community__image img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+}
+
+.about-community__copy .eyebrow {
+  margin-bottom: 1rem;
+}
+
+.about-community__copy h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.1rem, 3.6vw, 3rem);
+}
+
+.about-community__copy > p:not(.eyebrow) {
+  margin-top: 0.85rem;
+  color: #5e6b70;
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
 .about-values {
   padding-block: clamp(4.5rem, 8vw, 7rem);
   background: var(--color-white);
@@ -1057,6 +1509,14 @@ h2 {
 
 .about-cta .eyebrow {
   margin-bottom: 0.75rem;
+}
+
+.about-cta__description {
+  max-width: 600px;
+  margin-top: 0.9rem;
+  color: #5e6b70;
+  font-size: 0.83rem;
+  line-height: 1.75;
 }
 
 @keyframes rise-in {

@@ -1,9 +1,13 @@
-import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react'
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+} from 'lucide-react'
 import { Link } from 'react-router-dom'
-import SectionHeading from '../components/SectionHeading.jsx'
+import ChurchGallery from '../components/ChurchGallery.jsx'
+import FeaturedEvent from '../components/FeaturedEvent.jsx'
 
-const heroImage =
-  'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1600&q=88'
+const heroImage = '/images/church-gallery/photo_2_2026-11-04_21-49-35.jpg'
 
 function Home() {
   return (
@@ -18,8 +22,8 @@ function Home() {
             <h1>How can we <em>pray</em> for you?</h1>
             <p className="hero__description">
               Whatever you are going through, you don&apos;t have to face it alone.
-              Share your prayer request with us. It would be our privilege to stand
-              with you in prayer.
+              Share your prayer request with us. It would be our privilege to
+              stand with you in prayer.
             </p>
             <div className="hero__actions">
               <Link className="button button--primary" to="/prayer-request">
@@ -31,7 +35,7 @@ function Home() {
             </div>
             <div className="hero__note">
               <span className="hero__note-mark" aria-hidden="true">✳</span>
-              <span>Your request is met with care and prayer.</span>
+              <span>Prayer submissions are a demonstration until a backend is connected.</span>
             </div>
           </div>
 
@@ -39,7 +43,7 @@ function Home() {
             <div className="hero__image-frame">
               <img
                 src={heroImage}
-                alt="A raised hand in worship in a softly lit gathering"
+                alt="A speaker at a lectern during an evening church gathering."
                 fetchPriority="high"
               />
             </div>
@@ -60,38 +64,69 @@ function Home() {
         </a>
       </section>
 
-      <section className="ministry" id="prayer-ministry">
-        <div className="container ministry__grid">
-          <div className="ministry__intro">
-            <SectionHeading
-              eyebrow="PRAYER MINISTRY"
-              title="You don't have to carry it alone."
-              description="Life brings moments when we need someone beside us. Share what is on your heart, and our prayer team will stand with you in prayer."
-            />
-            <Link className="text-link text-link--dark" to="/prayer-request">
-              Let us pray with you <ArrowRight size={16} aria-hidden="true" />
-            </Link>
+      <section className="welcome-section" aria-labelledby="welcome-title">
+        <div className="container welcome-section__grid">
+          <div>
+            <p className="eyebrow">WELCOME</p>
+            <h2 id="welcome-title">Welcome to Jesus House, Redeem Church</h2>
           </div>
-
-          <blockquote className="scripture">
-            <span className="scripture__ornament" aria-hidden="true">“</span>
+          <div className="welcome-section__copy">
             <p>
-              The Lord is nigh unto them that are of a broken heart; and saveth
-              such as be of a contrite spirit.
+              We are glad you are here. This website is a welcoming way to
+              connect with the prayer ministry at Jesus House, Redeem Church
+              and share what is on your heart.
             </p>
-            <cite>PSALM 34:18 · KING JAMES VERSION</cite>
-          </blockquote>
+            <p>
+              Rooted in faith and prayer, we value fellowship, spiritual
+              encouragement and caring for one another as a community. Whether
+              you are looking for support, giving thanks or simply taking a
+              first step, you are welcome to reach out.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="prayer-cta">
+      <section
+        className="prayer-platform"
+        id="prayer-ministry"
+        aria-labelledby="prayer-platform-title"
+      >
+        <div className="container prayer-platform__grid">
+          <div>
+            <p className="eyebrow">A SIMPLE WAY TO REACH OUT</p>
+            <h2 id="prayer-platform-title">A Place Where Your Prayer Matters</h2>
+          </div>
+          <div className="prayer-platform__copy">
+            <p>
+              This platform provides a simple and welcoming way to share your
+              prayer requests with Jesus House, Redeem Church. Whether you are
+              seeking encouragement, praying for your family, facing challenges
+              or giving thanks, you can reach out and share what&apos;s on your
+              heart.
+            </p>
+            <Link className="button button--primary" to="/prayer-request">
+              Share Your Prayer Request <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <FeaturedEvent />
+
+      <ChurchGallery />
+
+      <section className="prayer-cta" aria-labelledby="prayer-cta-title">
         <div className="container prayer-cta__inner">
           <div>
             <p className="eyebrow prayer-cta__eyebrow">YOU ARE NOT ALONE</p>
-            <h2>There is always room for one more prayer.</h2>
+            <h2 id="prayer-cta-title">We Would Love to Pray With You</h2>
+            <p className="prayer-cta__description">
+              Whatever is on your heart, you don&apos;t have to carry it alone.
+              Share your request and let us stand with you in prayer.
+            </p>
           </div>
           <Link className="button button--light" to="/prayer-request">
-            Share Your Request <ArrowUpRight size={17} aria-hidden="true" />
+            Submit a Prayer Request <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
         </div>
       </section>

@@ -32,31 +32,59 @@ function About() {
             Home
           </Link>
           <p className="eyebrow">JESUS HOUSE, REDEEM CHURCH</p>
-          <h1>Prayer is a way we <em>care</em>.</h1>
+          <h1>Faith, fellowship and <em>prayer</em>.</h1>
           <p className="page-intro__description">
-            An introduction to the prayer ministry: a welcoming space to share
-            what is on your heart and invite prayer into every season of life.
+            A welcoming church community and a simple way to connect with the
+            prayer ministry, share what is on your heart and find spiritual
+            encouragement.
           </p>
         </div>
       </section>
 
       <section className="container about-ministry">
         <div className="about-ministry__lead">
-          <p className="eyebrow">A PLACE FOR PRAYER</p>
+          <p className="eyebrow">WELCOME TO JESUS HOUSE</p>
           <h2>You are welcome to come as you are.</h2>
         </div>
         <div className="about-ministry__copy">
           <p>
-            At Jesus House, Redeem Church, prayer is an invitation to pause,
-            share what matters, and seek God in the middle of everyday life.
-            Whatever your circumstances, you do not have to find perfect words
-            before asking for prayer.
+            At Jesus House, Redeem Church, faith and prayer are part of how we
+            encourage one another and make room for fellowship. We believe
+            people should be able to reach out in every season of life, without
+            needing to find perfect words first.
           </p>
           <p>
-            This prayer request page is a simple way to put a need or a moment
-            of gratitude into words. We hope it offers a gentle first step
-            toward feeling supported.
+            This website offers a simple way to connect with the church&apos;s
+            prayer ministry. Whether you are seeking encouragement, praying
+            for your family, facing a challenge or giving thanks, you are
+            welcome to share what is on your heart.
           </p>
+        </div>
+      </section>
+
+      <section className="about-community">
+        <div className="container about-community__grid">
+          <figure className="about-community__image">
+            <img
+              src="/images/church-gallery/photo_3_2026-11-04_21-49-35.jpg"
+              alt="People walking together through an outdoor church gathering."
+              loading="lazy"
+            />
+          </figure>
+          <div className="about-community__copy">
+            <p className="eyebrow">A COMMUNITY THAT CARES</p>
+            <h2>There is room for you here.</h2>
+            <p>
+              Prayer can bring comfort, hope and spiritual encouragement. This
+              platform is one way to take a first step and invite the prayer
+              ministry to stand with you.
+            </p>
+            <p>
+              To share a request, visit the prayer request page, choose a
+              category and write as much or as little as you wish. Your name
+              and email are optional, and you can choose to remain anonymous.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -84,6 +112,11 @@ function About() {
           <div>
             <p className="eyebrow">WE WOULD BE GLAD TO PRAY WITH YOU</p>
             <h2>Share what is on your heart.</h2>
+            <p className="about-cta__description">
+              This frontend form is a demonstration only. Requests are not
+              delivered to the church or stored until an approved backend is
+              connected.
+            </p>
           </div>
           <Link className="button button--primary" to="/prayer-request">
             Submit a Prayer Request <ArrowRight size={16} aria-hidden="true" />
