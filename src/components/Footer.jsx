@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import ChurchBrand from './ChurchBrand.jsx'
 
 const socialPlatforms = [
-  { name: 'Facebook', account: 'Oluseyi Ademolu Prayer Summit' },
-  { name: 'Instagram', account: '' },
-  { name: 'TikTok', account: '' },
-  { name: 'YouTube', account: 'Divine Intervention Prayer Summit' },
+  { name: 'Facebook', url: 'https://www.facebook.com/oluseyi.ademolu/' },
+  { name: 'Instagram', url: 'https://www.instagram.com/oluseyiademolu.psop/' },
+  { name: 'TikTok', url: 'https://www.tiktok.com/@oluseyiademolu' },
+  { name: 'YouTube', url: 'https://www.youtube.com/@divineinterventionprayersummit' },
 ]
 
 function SocialIcon({ platform }) {
@@ -69,15 +69,19 @@ function Footer() {
           <div className="site-footer__social">
             <p className="site-footer__label">Connect with us</p>
             <ul className="site-footer__social-list">
-              {socialPlatforms.map(({ name, account }) => (
-                <li
-                  key={name}
-                  aria-label={account ? `${name}: ${account}` : name}
-                >
-                  <SocialIcon platform={name} />
-                  <span>
-                    {account ? `${name}: ${account}` : name}
-                  </span>
+              {socialPlatforms.map(({ name, url }) => (
+                <li key={name}>
+                  {url ? (
+                    <a href={url} target="_blank" rel="noreferrer">
+                      <SocialIcon platform={name} />
+                      <span>{name}</span>
+                    </a>
+                  ) : (
+                    <>
+                      <SocialIcon platform={name} />
+                      <span>{name}</span>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>

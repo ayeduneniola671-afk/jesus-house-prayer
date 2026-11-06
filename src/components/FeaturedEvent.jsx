@@ -11,7 +11,7 @@ function FeaturedEvent() {
     <section className="featured-event" aria-labelledby="featured-event-title">
       <div className="container">
         <div className="featured-event__heading">
-          <p className="eyebrow">UPCOMING EVENT</p>
+          <p className="eyebrow">ON+GOING EVENT</p>
           <span>November 1st – 11th, 2026</span>
         </div>
 
