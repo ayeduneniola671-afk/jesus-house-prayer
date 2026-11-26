@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowLeft, ArrowUpRight, Heart, ShieldCheck } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const prayerCategories = [
   'Family and relationships',
@@ -13,8 +13,16 @@ const prayerCategories = [
 ]
 
 function PrayerRequest() {
+  const navigate = useNavigate()
   const [anonymous, setAnonymous] = useState(false)
   const [submission, setSubmission] = useState({ status: 'idle', message: '' })
+
+  useEffect(() => {
+    if (submission.status !== 'success') return undefined
+
+    const redirectTimeout = window.setTimeout(() => navigate('/'), 2000)
+    return () => window.clearTimeout(redirectTimeout)
+  }, [navigate, submission.status])
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -22,6 +30,8 @@ function PrayerRequest() {
 
     const form = event.currentTarget
     const formData = new FormData(form)
+    const isAnonymous = formData.get('anonymous') === 'on'
+    const name = String(formData.get('name') ?? '').trim()
     const message = String(formData.get('message') ?? '').trim()
 
     if (!message) {
@@ -39,9 +49,9 @@ function PrayerRequest() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          anonymous,
-          name: anonymous ? '' : String(formData.get('name') ?? ''),
-          email: anonymous ? '' : String(formData.get('email') ?? ''),
+          anonymous: isAnonymous,
+          name: isAnonymous ? '' : name,
+          email: isAnonymous ? '' : String(formData.get('email') ?? '').trim(),
           category: String(formData.get('category') ?? ''),
           message,
         }),

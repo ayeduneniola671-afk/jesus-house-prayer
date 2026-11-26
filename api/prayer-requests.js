@@ -69,6 +69,8 @@ function cleanText(value, maxLength, allowNewlines = false) {
   if (typeof value !== 'string') return null
 
   const cleaned = value
+    // Keep this control-character filter: prayer text may retain tabs and line breaks.
+    // eslint-disable-next-line no-control-regex
     .replace(allowNewlines ? /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g : /[\u0000-\u001F\u007F]/g, '')
     .trim()
 
@@ -122,6 +124,7 @@ export default async function handler(req, res) {
   const submittedEmail = cleanText(body.email ?? '', 254)
   const name = anonymous ? '' : submittedName
   const email = anonymous ? '' : submittedEmail
+  const displayName = anonymous ? 'Anonymous' : name || 'Not provided'
   const category = cleanText(body.category, 60)
   const message = cleanText(body.message, 3000, true)
 
@@ -158,7 +161,7 @@ export default async function handler(req, res) {
   const text = [
     'NEW PRAYER REQUEST',
     '',
-    `Name: ${anonymous ? 'Anonymous' : name || 'Not provided'}`,
+    `Name: ${displayName}`,
     ...(email ? [`Email: ${email}`] : []),
     `Category: ${category}`,
     `Prayer Request: ${message}`,
