@@ -11,7 +11,7 @@ function ChurchBrand({ variant = 'header', onClick }) {
       <img
         className="church-brand__logo church-brand__logo--headquarters"
         src="/images/redeem-hq-logo.png"
-        alt=""
+        alt="Jesus House, Redeem Church"
       />
       <span className="church-brand__name">
         <span>Jesus House</span>

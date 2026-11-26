@@ -14,11 +14,73 @@ const prayerCategories = [
 
 function PrayerRequest() {
   const [anonymous, setAnonymous] = useState(false)
-  const [showDemoNotice, setShowDemoNotice] = useState(false)
+  const [submission, setSubmission] = useState({ status: 'idle', message: '' })
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    setShowDemoNotice(true)
+    if (submission.status === 'submitting') return
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const message = String(formData.get('message') ?? '').trim()
+
+    if (!message) {
+      setSubmission({
+        status: 'error',
+        message: 'Please enter your prayer request before submitting.',
+      })
+      return
+    }
+
+    setSubmission({ status: 'submitting', message: '' })
+
+    try {
+      const response = await fetch('/api/prayer-requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          anonymous,
+          name: anonymous ? '' : String(formData.get('name') ?? ''),
+          email: anonymous ? '' : String(formData.get('email') ?? ''),
+          category: String(formData.get('category') ?? ''),
+          message,
+        }),
+      })
+      let result
+      try {
+        result = await response.json()
+      } catch {
+        throw new Error('We could not submit your request. Please try again.')
+      }
+
+      if (!result || typeof result !== 'object') {
+        throw new Error('We could not submit your request. Please try again.')
+      }
+
+      if (!response.ok || result.success !== true) {
+        throw new Error(
+          typeof result.error === 'string'
+            ? result.error
+            : 'We could not submit your request. Please try again.',
+        )
+      }
+
+      form.reset()
+      setAnonymous(false)
+      setSubmission({
+        status: 'success',
+        message: 'Your prayer request has been submitted successfully. God bless you.',
+      })
+    } catch (error) {
+      setSubmission({
+        status: 'error',
+        message: error instanceof TypeError
+          ? 'We could not reach the server. Please check your connection and try again.'
+          : error instanceof Error && error.message
+            ? error.message
+            : 'We could not submit your request. Please try again.',
+      })
+    }
   }
 
   return (
@@ -52,8 +114,9 @@ function PrayerRequest() {
             <ShieldCheck size={18} aria-hidden="true" />
             <p>
               <strong>Your privacy matters.</strong> Please share only what you
-              are comfortable including. This demonstration does not send or
-              save anything you enter.
+              are comfortable including. Requests are sent to the church prayer
+              team in Telegram, where group members can see them; this website
+              does not store them in a database.
             </p>
           </div>
         </aside>
@@ -65,12 +128,11 @@ function PrayerRequest() {
             <p>Fields marked with <span aria-hidden="true">*</span> are required.</p>
           </div>
 
-          <div className="demo-notice" role="note">
-            <strong>Demonstration only:</strong> This form is not connected to
-            the church. Submitting will not deliver or store your request.
-          </div>
-
-          <form className="prayer-form" onSubmit={handleSubmit}>
+          <form
+            className="prayer-form"
+            onSubmit={handleSubmit}
+            aria-busy={submission.status === 'submitting'}
+          >
             <div className="form-row">
               <div className="form-field">
                 <label htmlFor="prayer-name">Name <span>(optional)</span></label>
@@ -139,20 +201,30 @@ function PrayerRequest() {
               </span>
             </label>
 
-            <button className="button button--primary prayer-form__submit" type="submit">
-              Submit prayer request <ArrowUpRight size={17} aria-hidden="true" />
+            <button
+              className="button button--primary prayer-form__submit"
+              type="submit"
+              disabled={submission.status === 'submitting'}
+            >
+              {submission.status === 'submitting'
+                ? 'Submitting...'
+                : <>Submit prayer request <ArrowUpRight size={17} aria-hidden="true" /></>}
             </button>
 
-            {showDemoNotice && (
-              <p className="form-feedback" role="status" aria-live="polite">
-                This was a demonstration only. Your request was not sent or saved.
+            {submission.message && (
+              <p
+                className="form-feedback"
+                role={submission.status === 'error' ? 'alert' : 'status'}
+                aria-live={submission.status === 'error' ? 'assertive' : 'polite'}
+              >
+                {submission.message}
               </p>
             )}
           </form>
 
           <p className="request-card__privacy">
-            No prayer request information is transmitted, stored, or logged by
-            this page.
+            Your request is sent to the church prayer team in Telegram, where
+            group members can see it. This website does not store it in a database.
           </p>
         </div>
       </section>

@@ -6,12 +6,27 @@ import {
 import { Link } from 'react-router-dom'
 import ChurchGallery from '../components/ChurchGallery.jsx'
 import FeaturedEvent from '../components/FeaturedEvent.jsx'
+import PrayerVideoLibrary from '../components/PrayerVideoLibrary.jsx'
 
 const heroImage = '/images/church-gallery/photo_2_2026-11-04_21-49-35.jpg'
 
 function Home() {
   return (
     <main>
+      <section className="home-branding" aria-label="Jesus House Prayer Summit">
+        <div className="container home-branding__inner">
+          <img
+            className="home-branding__logo"
+            src="/images/jesus-house-branch-logo.jpg"
+            alt="Jesus House Zonal Headquarters branch logo"
+          />
+          <div className="home-branding__name">
+            <p>Jesus House</p>
+            <span>PRAYER SUMMIT</span>
+          </div>
+        </div>
+      </section>
+
       <section className="hero">
         <div className="container hero__grid">
           <div className="hero__copy">
@@ -112,6 +127,8 @@ function Home() {
       </section>
 
       <FeaturedEvent />
+
+      <PrayerVideoLibrary />
 
       <ChurchGallery />
 

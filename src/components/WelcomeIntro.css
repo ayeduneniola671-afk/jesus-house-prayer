@@ -1,0 +1,315 @@
+.welcome-intro {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  place-items: center;
+  overflow-y: auto;
+  padding: clamp(5.75rem, 11vh, 7rem) clamp(1.25rem, 5vw, 4rem) 2rem;
+  color: #172b35;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(255, 255, 255, 0.92), transparent 49%),
+    radial-gradient(circle at 13% 82%, rgba(197, 166, 106, 0.13), transparent 25rem),
+    radial-gradient(circle at 88% 16%, rgba(197, 166, 106, 0.12), transparent 22rem),
+    #f5f0e7;
+  animation: welcome-intro-fade-in 900ms ease both;
+}
+
+.welcome-intro::before,
+.welcome-intro::after {
+  position: fixed;
+  z-index: -1;
+  width: min(36vw, 430px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(197, 166, 106, 0.16);
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.welcome-intro::before {
+  top: -25%;
+  left: -18%;
+}
+
+.welcome-intro::after {
+  right: -20%;
+  bottom: -34%;
+  width: min(48vw, 570px);
+}
+
+.welcome-intro__parent-brand {
+  position: absolute;
+  top: clamp(1rem, 3vw, 2rem);
+  left: clamp(1rem, 3vw, 2rem);
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+  color: rgba(23, 43, 53, 0.66);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.1;
+}
+
+.welcome-intro__parent-brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  opacity: 0.82;
+}
+
+.welcome-intro__skip {
+  position: absolute;
+  top: clamp(1.25rem, 3vw, 2rem);
+  right: clamp(1.25rem, 4vw, 3.5rem);
+  padding: 0.55rem 0.2rem;
+  border-bottom: 1px solid rgba(197, 166, 106, 0.56);
+  color: rgba(23, 43, 53, 0.76);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 220ms ease, border-color 220ms ease;
+}
+
+.welcome-intro__skip:hover {
+  border-color: #c5a66a;
+  color: #172b35;
+}
+
+.welcome-intro__content {
+  display: flex;
+  width: min(100%, 760px);
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.welcome-intro__logo-frame {
+  display: grid;
+  width: clamp(5.6rem, 13vw, 7.5rem);
+  height: clamp(5.6rem, 13vw, 7.5rem);
+  place-items: center;
+  padding: 0.25rem;
+  border: 1px solid rgba(197, 166, 106, 0.48);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 18px 48px rgba(23, 43, 53, 0.12), 0 0 0 7px rgba(255, 255, 255, 0.34);
+  animation: welcome-logo-reveal 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.welcome-intro__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.welcome-intro__welcome,
+.welcome-intro__title,
+.welcome-intro__question,
+.welcome-intro__tagline,
+.welcome-intro__description,
+.welcome-intro__enter {
+  animation: welcome-text-reveal 850ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.welcome-intro__welcome {
+  margin-top: clamp(1.35rem, 3vh, 2rem);
+  color: #8d7447;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.welcome-intro__title {
+  display: grid;
+  gap: 0.05em;
+  margin-top: 0.4rem;
+  font-size: clamp(2.15rem, 5.2vw, 3.75rem);
+  line-height: 1.08;
+}
+
+.welcome-intro__title span:last-child {
+  color: #a68a55;
+  font-size: 0.78em;
+  font-style: italic;
+  letter-spacing: 0.015em;
+}
+
+.welcome-intro__question {
+  margin-top: clamp(1rem, 2.4vh, 1.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 4.1vw, 2.8rem);
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.welcome-intro__question em {
+  color: #a68a55;
+  font-weight: 500;
+}
+
+.welcome-intro__tagline {
+  margin-top: 0.85rem;
+  color: #8d7447;
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.welcome-intro__description {
+  max-width: 590px;
+  margin-top: 1rem;
+  color: rgba(23, 43, 53, 0.76);
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  line-height: 1.85;
+}
+
+.welcome-intro__enter {
+  min-width: 190px;
+  min-height: 52px;
+  margin-top: clamp(1.35rem, 3vh, 2rem);
+  padding: 0.8rem 1.7rem;
+  border: 1px solid #c5a66a;
+  border-radius: 2px;
+  color: #fff;
+  background: #172b35;
+  box-shadow: 0 8px 20px rgba(23, 43, 53, 0.15);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition:
+    background-color 240ms ease,
+    box-shadow 240ms ease,
+    transform 240ms ease;
+}
+
+.welcome-intro__enter:hover {
+  background: #263f49;
+  box-shadow: 0 12px 28px rgba(23, 43, 53, 0.22), 0 0 22px rgba(197, 166, 106, 0.24);
+  transform: translateY(-2px);
+}
+
+.welcome-intro__enter:active {
+  transform: translateY(1px);
+}
+
+.welcome-intro--exiting {
+  animation: welcome-intro-fade-out 650ms ease both;
+  pointer-events: none;
+}
+
+@keyframes welcome-intro-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes welcome-logo-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes welcome-text-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes welcome-intro-fade-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome-intro {
+    padding-block: 5.5rem 1.5rem;
+  }
+
+  .welcome-intro__parent-brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .welcome-intro__parent-brand {
+    font-size: 0.52rem;
+  }
+
+  .welcome-intro__skip {
+    top: 1.25rem;
+    right: 1.1rem;
+    font-size: 0.67rem;
+  }
+
+  .welcome-intro__tagline {
+    max-width: 290px;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (max-height: 680px) and (min-width: 601px) {
+  .welcome-intro {
+    padding-block: 4.5rem 1.5rem;
+  }
+
+  .welcome-intro__logo-frame {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+
+  .welcome-intro__welcome {
+    margin-top: 0.8rem;
+  }
+
+  .welcome-intro__question,
+  .welcome-intro__tagline,
+  .welcome-intro__description {
+    margin-top: 0.65rem;
+  }
+
+  .welcome-intro__enter {
+    min-height: 46px;
+    margin-top: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-intro,
+  .welcome-intro *,
+  .welcome-intro::before,
+  .welcome-intro::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

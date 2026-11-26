@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer.jsx'
 import Navbar from './components/Navbar.jsx'
+import WelcomeIntro from './components/WelcomeIntro.jsx'
 import About from './pages/About.jsx'
 import Home from './pages/Home.jsx'
 import PrayerRequest from './pages/PrayerRequest.jsx'
@@ -22,10 +24,12 @@ function NotFound() {
   )
 }
 
-function App() {
+function AppContent() {
+  const [introOpen, setIntroOpen] = useState(true)
+
   return (
-    <BrowserRouter>
-      <div className="site-shell">
+    <>
+      <div className="site-shell" inert={introOpen} aria-hidden={introOpen}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -35,6 +39,17 @@ function App() {
         </Routes>
         <Footer />
       </div>
+      {introOpen && (
+        <WelcomeIntro active onDismiss={() => setIntroOpen(false)} />
+      )}
+    </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   )
 }
